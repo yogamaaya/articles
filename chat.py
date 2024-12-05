@@ -12,7 +12,6 @@ import os
 load_dotenv()
 
 openai_api_key = os.getenv('OPENAI_API_KEY')
-print(openai_api_key)
 # def test_on_submit(query):
 #     random_number = random.randint(1, 100)  # Generate a random number between 1 and 100
 #     return "query " + str(random_number) + ": >> " + query
