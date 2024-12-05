@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Chat</title>
+    <script>
+        async function submitMessage(event) {
+            event.preventDefault();
+            const messageInput = document.getElementById('messageInput');
+            const message = messageInput.value;
+
+            if (message) {
+                const response = await fetch('/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ message: message })
+                });
+
+                const data = await response.json();
+                if (response.ok) {
+                    console.log('Success: ', data.messages);
+                    updateChat(data.messages);
+                    messageInput.value = ''; // clear the input field after sending message
+                } else {
+                    console.error('Error:', data.error);
+                }
+            }
+        }
+
+        function updateChat(messages) {
+            const chatBox = document.getElementById('chatBox');
+            chatBox.innerHTML = '';  // Clear existing messages
+            console.log(messages);
+            console.log("FROM FRONTEND ");
+            for (let i = 0; i < messages.length; i++) {
+                let msg = messages[i];
+                if (i % 2 == 0){
+                    msg = '<li style="color:#7dcd9d;"><b> You: </b>' + msg + '</li>';
+                }
+                else{
+                    msg = '<li style="color:#bb71fa;"><b> Text: </b>' + msg + '</li>';
+                }
+                console.log(msg);
+                const messageElement = document.createElement('p');
+                messageElement.innerHTML = msg;
+                chatBox.appendChild(messageElement);
+            }
+        }
+    </script>
+</head>
+<body>
+<div class="sticky-header">
+    <h1>Song of The Blessed One</h1>
+    <div class="description">
+    <p>Also known as "Bhagawad Gita".</p>
+    <p>Here, you can chat with a summarized version of the Gita. Let your curiosity flow!</p>
+    <p size="2"> Tip: To obtain better answers, try prefacing questions with "According to Sri Krishna" or "In this text"!</p>
+    </div>
+    <form class="input-form"  id="messageForm" onsubmit="submitMessage(event)">
+        <input class="input-field" placeholder="Type a question to ask the Text." type="text" id="messageInput"  />
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+    <div class="chatBox" id="chatBox">
+        <div class="chat-container">
+        <div class="chat-box">
+            <ul class="messages">
+        <!-- Messages will be inserted here by JavaScript -->
+            </ul>
+        </div>
+        </div>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
