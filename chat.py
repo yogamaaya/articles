@@ -24,12 +24,12 @@ import requests
 from bs4 import BeautifulSoup
 
 #get text data from url
-url="https://textdoc.co/4YxEOjwkb6rMHyop"
+url="https://textdoc.co/fCAmzT1RyWtlN9qj"
 response = requests.get(url)
 soup = BeautifulSoup(response.content, "html.parser")
 text = soup.get_text(strip=True)  # Get all text and strip whitespace
-text = text[169:]
-text= text[:18860]
+text = text.replace("Online Text Editor - Create, Edit, Share and Save Text FilesTextdocZipdocWriteurlTxtshareOnline CalcLoading…Open FileSave to Drive","")
+text = text.replace("/ Drive Add-on","")
 
 #create function to count tokens
 tokenizer = GPT2TokenizerFast.from_pretrained("gpt2")
