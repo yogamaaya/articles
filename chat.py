@@ -4,22 +4,9 @@ from langchain_community.embeddings import OpenAIEmbeddings
 from langchain.chains.question_answering import load_qa_chain
 from langchain_community.llms import OpenAI
 from langchain.chains import ConversationalRetrievalChain
-
-# @title Enter the secret passphrase! Psst... it's not open sesame.
-from dotenv import load_dotenv
 import os
+openai_api_key = os.environ.get('OPENAI_API_KEY')
 
-load_dotenv()
-
-openai_api_key = os.getenv('OPENAI_API_KEY')
-# def test_on_submit(query):
-#     random_number = random.randint(1, 100)  # Generate a random number between 1 and 100
-#     return "query " + str(random_number) + ": >> " + query
-
-# @title Click play to chat!
-import warnings
-
-warnings.filterwarnings("ignore")
 #get contents in webpage from url with library
 import requests
 from bs4 import BeautifulSoup
@@ -56,7 +43,7 @@ from langchain_chroma import Chroma
 from langchain_community.document_loaders import TextLoader
 from langchain_community.embeddings.sentence_transformer import (
     SentenceTransformerEmbeddings, )
-from langchain_text_splitters import CharacterTextSplitter
+#from langchain_text_splitters import CharacterTextSplitter
 
 embeddings = OpenAIEmbeddings()
 
@@ -88,7 +75,7 @@ def initialize_qa():
 chat_history = []
 
 
-def test_on_submit(query):
+def on_submit(query):
     qa = initialize_qa()
     print(f"Message from front end flask: {query}")
     result = qa({"question": query, "chat_history": chat_history})

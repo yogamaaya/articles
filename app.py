@@ -12,8 +12,6 @@ def submit_message():
     new_messages = receive_message()
     global messages
     messages = new_messages  # Update the messages with the latest messages
-    print("HELLO FROM /submit call! msg received")
-    print(messages)
     return new_messages
 
 @app.route('/chat', methods=['GET'])

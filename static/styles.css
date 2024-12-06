@@ -1,87 +1,87 @@
 body {
-    font-family: "Georgia", sans-serif;
-    margin: 0;
-    padding: 0;
+  font-family: "Georgia", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .sticky-header {
-    position: sticky;
-    top: 0;
-    width: 100%;
-    background-color: #020d0c;
-    color: #ffffff;
-    padding: 15px 0;
-    text-align: center;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #020d0c;
+  color: #ffffff;
+  padding: 15px 0;
+  text-align: center;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-    margin: 0;
-    font-size: 24px;
+  margin: 0;
+  font-size: 24px;
 }
 
 .description {
-    margin: 0;
-    font-size: 16px;
-    background-color: rgb(69, 10, 97, 0.7);
-    padding: 15px;
-    border-radius: 50px;
-    width: fit-content;
-    position: relative;
-    align-content: end;
-    display: inline-table;
+  margin: 0;
+  font-size: 16px;
+  background-color: rgb(69, 10, 97, 0.7);
+  padding: 15px;
+  border-radius: 50px;
+  width: fit-content;
+  position: relative;
+  align-content: end;
+  display: inline-table;
 }
 
 .description p {
-    font-size: 0.8em;  /* Reduces the font size */
+  font-size: 0.8em;  /* Reduces the font size */
 }
 
 #descriptionContent.collapse.show .description {
-    /* Custom styles for expanded state */
-    margin-top: 10px;
+  /* Custom styles for expanded state */
+  margin-top: 10px;
 }
 
 .btn-primary {
-    color: #fff;
-    background-color: #740476;
-    border-color: #ffffff;
-    padding: 2px 10px;
-    font-size: 0.6em;
-    border-radius: 5px;
+  color: #fff;
+  background-color: #740476;
+  border-color: #ffffff;
+  padding: 2px 10px;
+  font-size: 0.6em;
+  border-radius: 5px;
 }
 
 .tips {
-    font-size: 1em;
-    text-align:  -webkit-center;
-    /* Adjust the font size as needed */
+  font-size: 1em;
+  text-align:  -webkit-center;
+  /* Adjust the font size as needed */
 }
 
 .descPara{
-    font-size: 0.8em;
+  font-size: 0.8em;
 }
 
 
 .chatBox {
-    display: flex;
-    flex-direction: column;
-    list-style-type: none;
-    background-color: #ffffff; /* Pale violet color */
-    padding: 15px;
-    overflow-y: auto;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  background-color: #ffffff; /* Pale violet color */
+  padding: 15px;
+  overflow-y: auto;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .messages {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    width: 100%;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
 }
 
 .messages li {
-    margin-bottom: 10px;
-    text-align: left;
+  margin-bottom: 10px;
+  text-align: left;
 }

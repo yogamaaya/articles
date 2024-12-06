@@ -1,5 +1,6 @@
 from flask import request, jsonify
-from chat import test_on_submit
+from chat import on_submit
+
 messages = []
 
 
@@ -9,10 +10,14 @@ def receive_message():
         message = data.get('message', '')
         if message:
             messages.append(message)
-            reply = test_on_submit(message)
+            reply = on_submit(message)
             messages.append(reply)
             print("response: ", messages)
-            return jsonify({'message': message, 'reply': reply, 'messages': messages})
+            return jsonify({
+                'message': message,
+                'reply': reply,
+                'messages': messages
+            })
         else:
             return jsonify({'error': 'Empty message'}), 400
     return jsonify({'error': 'Invalid Content-Type'}), 400
