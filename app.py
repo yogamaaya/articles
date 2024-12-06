@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, render_template, redirect, url_for
+from flask import Flask, render_template
 from message_handler import receive_message
 app = Flask(__name__)
 # Simple storage to keep messages in memory

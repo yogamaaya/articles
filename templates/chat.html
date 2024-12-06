@@ -5,7 +5,18 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
     <title>Chat</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <script>
+
+        function change() // no ';' here
+        {
+            var elem = document.getElementById("tips");
+            if (elem.value=="Show Tips!") {elem.value = "Close";
+                elem.innerHTML = "Close";}
+            else {elem.value = "Show Tips!"; elem.innerHTML = "How to Use?"; };
+        }
+
         async function submitMessage(event) {
             event.preventDefault();
             const messageInput = document.getElementById('messageInput');
@@ -39,10 +50,10 @@
             for (let i = 0; i < messages.length; i++) {
                 let msg = messages[i];
                 if (i % 2 == 0){
-                    msg = '<li style="color:#7dcd9d;"><b> You: </b>' + msg + '</li>';
+                    msg = '<li style="color:#103356;"><b> You: </b>' + msg + '</li>';
                 }
                 else{
-                    msg = '<li style="color:#bb71fa;"><b> Text: </b>' + msg + '</li>';
+                    msg = '<li style="color:#740476;"><b> Text: </b>' + msg + '</li>';
                 }
                 console.log(msg);
                 const messageElement = document.createElement('p');
@@ -54,23 +65,23 @@
 </head>
 <body>
 <div class="sticky-header">
-    <h1>Speak to your Knowledge</h1>
+    <h1>Talk to your Knowledge</h1>
     <div class="description">
-        <p>Here, you can chat with any text. <br>
-            1) Paste the text you want to chat with <a href="https://textdoc.co/fCAmzT1RyWtlN9qj">here!</a> <br>
-            2) Let your curiosity flow!
-        </p>
+
         <div class="collapseBtn">
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#descriptionContent" aria-expanded="false" aria-controls="descriptionContent">
-        Show tips!
+        <button id="tips" class="btn btn-primary" type="button" value="Show Tips!" data-toggle="collapse" data-target="#descriptionContent" aria-expanded="false" aria-controls="descriptionContent" onclick="change()">How To Use?
         </button>
         </div>
         <div id="descriptionContent" class="collapse">
         <div class="tips">
+            <p>Please paste the text corpus to chat with <a href="https://textdoc.co/fCAmzT1RyWtlN9qj" target="_blank" rel="noopener noreferrer">here!</a> <br>
+                Default: Bhagawad Gita Short Summary <br>
+                <div class="descPara">
         <p> To obtain better answers, try prefacing questions with "In this context", "According to this text" etc.!
             <br> A starter question can be "What is summary of this text?"
             <br> Try to reference the text as much as possible. Example: "What does X in the text say about Y"?
         <br> PS: Please give this little baby some time to think as responses might be slowwww~</p>
+                </div>
         </div>
     </div>
     </div>
